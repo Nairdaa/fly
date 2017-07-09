@@ -39,7 +39,7 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 - [Checkpoints (optional)](#checkpoints-optional)
 - [Map properties](#map-properties)
 - [Naming convention](#naming-convention)
-- [Zones TL;DR](#tl;dr)
+- [Zones TL;DR](#tldr)
 
 ### Zones
 #### Basics of zoning
@@ -125,10 +125,15 @@ mod_end_zone
 
 ### Map properties
 #### Giving your map a difficulty
+- How to add custom key to map properties
+
 You can find this in hammer `Topmenu -> Map -> Map properties...` (entity `worldspawn`)
 ![Step 1](http://i.imgur.com/biu9Ipf.png)  
 ![Step 2](http://i.imgur.com/9DTt3yR.png)  
 
+- Map difficulty `mod_tier` -> `3` range from 1 to 6, where 1 is easy and 6 is hard.
+- Map creator `mod_creator` -> `my name`
+- Map creator's steamid64 `mod_creator_steamid64` -> `76561198244883534`
 ### Naming convention
 - Map names should have the prefix `fly_`
 - Refrain from adding suffix'es to map names e.g. `fly_mymap_v1, fly_mymap_v2, fly_mymap_fix, fly_mymap_<insert_name_of_commnuity_here>`
@@ -139,7 +144,7 @@ You can find this in hammer `Topmenu -> Map -> Map properties...` (entity `world
 - mod_start_zone - Must have 1, any maps with more than 1 or none will not be accepted
 - mod_end_zone - Must have 1, any maps with more than 1 or none will not be accepted
 - mod_stage_start_X - Optional, if you wish to implement stages refer to [this section](#stages-optional)
-- mod_stage_end_X - Optional, if you wish to implement stages refer to [this section](#stages-optional))
+- mod_stage_end_X - Optional, if you wish to implement stages refer to [this section](#stages-optional)
 - mod_checkpoint_start_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-optional)
 - mod_checkpoint_end_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-optional)
 
