@@ -36,7 +36,9 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 - [End zone](#end-zone)
 - [Stages (optional)](#stages-(optional))
 - [Checkpoints (optional)](#checkpoints-(optional))
-- [TL;DR](#tl;dr)
+- [Map properties](#map-properties)
+- [Naming convention](#naming-convention)
+- [Zones TL;DR](#tl;dr)
 
 ### Zones
 #### Basics of zoning
@@ -117,6 +119,17 @@ mod_checkpoint_start_4
 mod_checkpoint_end_4
 mod_end_zone
 ```
+
+### Map properties
+#### Giving your map a difficulty
+You can find this in hammer `Topmenu -> Map -> Map properties...`  
+![alt text](http://i.imgur.com/biu9Ipf)  
+![alt text](http://i.imgur.com/9DTt3yR)
+
+### Naming convention
+- Map names should have the prefix `fly_`
+- Refrain from adding suffix'es to map names e.g. `fly_mymap_v1, fly_mymap_v2, fly_mymap_fix, fly_mymap_<insert_name_of_commnuity_here>`
+- Do **not** use uppercase letters, numbers, spaces and special characters in map names e.g. `fly_mym4p, fly_mym$p, fly_MyMAp, fly_my map`
 
 ### TL;DR
 #### trigger_multiple
