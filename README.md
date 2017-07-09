@@ -43,6 +43,7 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 ### Zones
 #### Basics of zoning
 - There can only be unique names in the property field `name`, having more than 1 entity with the same `name` will result in sanity check fail.
+- It is the mappers job to mark/draw zones if they wish to do so!
 
 #### Start zone
 The map must have 1 `trigger_multiple` entity with the property `name` set to `mod_start_zone`.  
@@ -122,9 +123,9 @@ mod_end_zone
 
 ### Map properties
 #### Giving your map a difficulty
-You can find this in hammer `Topmenu -> Map -> Map properties...`  
-![Step 1  ](http://i.imgur.com/biu9Ipf.png)  
-![Step 2  ](http://i.imgur.com/9DTt3yR.png)  
+You can find this in hammer `Topmenu -> Map -> Map properties...` (entity `worldspawn`)
+![Step 1](http://i.imgur.com/biu9Ipf.png)  
+![Step 2](http://i.imgur.com/9DTt3yR.png)  
 
 ### Naming convention
 - Map names should have the prefix `fly_`
