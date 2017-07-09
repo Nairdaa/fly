@@ -171,6 +171,6 @@ If you wish to make a timer for this gamemode please follow our standards.
   - Use the same logic as you used for start zones, except the speed punishments.
   - Please also read the [mapping guidelines on checkpoints](#checkpoints-optional), it will strengthen your knowledge and understanding of checkpoints.
 - Ticks vs Time
-  - On each tick add the value of `Globals->frametime` to a clients current time e.g. `Client[idx].time += Globals->frametime`
+  - How we calculate time used in a run is TBD
   
 Other than that apply common sense to whatever you do :)
