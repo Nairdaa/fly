@@ -153,7 +153,7 @@ You can find this in hammer `Topmenu -> Map -> Map properties...` (entity `world
 If you wish to sanity check your map download ##this## tool then drag & drop the map onto it.
 
 ## Plugin guidelines
-If you wish to make a timer for this game mode please follow our standards.  
+If you wish to make a timer for this gamemode please follow our standards.  
 - Start zone `mod_start_zone`
   - The tick where `!(EntityFlags & FL_ONGROUND)` is when the timer starts.
     - A players timer should be stopped if the speed of the player is greater than 290 upon timer start. if this happens you probably did something wrong in the first place!
@@ -171,6 +171,6 @@ If you wish to make a timer for this game mode please follow our standards.
   - Use the same logic as you used for start zones, except the speed punishments.
   - Please also read the [mapping guidelines on checkpoints](#checkpoints-optional), it will strengthen your knowledge and understanding of checkpoints.
 - Ticks vs Time
-  - Use ticks instead of time e.g. `ticks * tick_interval` to get a precise time.
+  - On each tick add the value of `Globals->frametime` to a clients current time e.g. `Client[idx].time += Globals->frametime`
   
 Other than that apply common sense to whatever you do :)
