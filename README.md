@@ -58,40 +58,40 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 - Do not place a booster inside your start zone, they need to be atleast 72 units apart from eachother!
 
 #### Start zone
-The map must have 1 `trigger_multiple` entity with the property `name` set to `mod_start_zone`.  
-Having more than entity with the property `name` set to `mod_start_zone` will result in a failed sanity check.  
+The map must have 1 `trigger_multiple` entity with the property `name` set to `mod_zone_start`.  
+Having more than entity with the property `name` set to `mod_zone_start` will result in a failed sanity check.  
 
 #### End zone
-The map must have 1 `trigger_multiple` entity with the property `name` set to `mod_end_zone`.  
-Having more than entity with the property `name` set to `mod_end_zone` will result in a failed sanity check.  
+The map must have 1 `trigger_multiple` entity with the property `name` set to `mod_zone_end`.  
+Having more than entity with the property `name` set to `mod_zone_end` will result in a failed sanity check.  
 
 #### Stages (optional)
-To start of `mod_start_zone` acts as a `mod_stage_start_1` and `mod_end_zone` acts as a `mod_stage_end_<last_stage>` if ``.  
+To start of `mod_zone_start` acts as a `mod_zone_stage_start_1` and `mod_zone_end` acts as a `mod_zone_stage_end_<last_stage>` if ``.  
 
 Examples of entities
 ```CPP
 // Example 1 (works!)
-mod_start_zone // this zone will act as a mod_stage_start_1 aswell.
-mod_stage_end_1
-mod_stage_start_2
-mod_stage_end_2
-mod_stage_start_3
-mod_end_zone // this zone will act as a mod_stage_end_3 aswell.
+mod_zone_start // this zone will act as a mod_zone_stage_start_1 aswell.
+mod_zone_stage_end_1
+mod_zone_stage_start_2
+mod_zone_stage_end_2
+mod_zone_stage_start_3
+mod_zone_end // this zone will act as a mod_zone_stage_end_3 aswell.
 
 // Example 2 (does not work!)
-mod_start_zone
-mod_stage_start_1 // Error mod_stage_start_1 is already implemented in mod_start_zone
-mod_stage_end_1
-mod_stage_start_2
-mod_stage_end_2
-mod_stage_start_3
-mod_stage_end_3
-mod_end_zone // Error missing mod_stage_start_4 but previous was mod_stage_end_3
+mod_zone_start
+mod_zone_stage_start_1 // Error mod_zone_stage_start_1 is already implemented in mod_zone_start
+mod_zone_stage_end_1
+mod_zone_stage_start_2
+mod_zone_stage_end_2
+mod_zone_stage_start_3
+mod_zone_stage_end_3
+mod_zone_end // Error missing mod_zone_stage_start_4 but previous was mod_zone_stage_end_3
 
 // Example 3 (does not work!)
-mod_start_zone // this zone will act as a mod_stage_start_1 aswell.
-mod_stage_end_1
-mod_end_zone // Error missing mod_stage_start_2 but previous was mod_stage_end_1
+mod_zone_start // this zone will act as a mod_zone_stage_start_1 aswell.
+mod_zone_stage_end_1
+mod_zone_end // Error missing mod_zone_stage_start_2 but previous was mod_zone_stage_end_1
 ```
 
 ##### Side effects
@@ -103,27 +103,27 @@ Checkpoints work independently of all other zones which means that skipping chec
 Examples of entities
 ```CPP
 // Example 1 (works!)
-mod_start_zone
-mod_checkpoint_1
-mod_checkpoint_2
-mod_checkpoint_3
-mod_end_zone
+mod_zone_start
+mod_zone_checkpoint_1
+mod_zone_checkpoint_2
+mod_zone_checkpoint_3
+mod_zone_end
 
 // Example 2 (does not work!)
-mod_start_zone
-mod_checkpoint_1
-mod_checkpoint_3 // Error missing checkpoint 2
-mod_end_zone
+mod_zone_start
+mod_zone_checkpoint_1
+mod_zone_checkpoint_3 // Error missing checkpoint 2
+mod_zone_end
 
 // Example 3 (works!)
-mod_start_zone
-mod_stage_end_1
-mod_checkpoint_1
-mod_checkpoint_2
-mod_stage_start_2
-mod_checkpoint_3
-mod_checkpoint_4
-mod_end_zone
+mod_zone_start
+mod_zone_stage_end_1
+mod_zone_checkpoint_1
+mod_zone_checkpoint_2
+mod_zone_stage_start_2
+mod_zone_checkpoint_3
+mod_zone_checkpoint_4
+mod_zone_end
 ```
 
 ### Map properties
@@ -146,31 +146,31 @@ You can find this in hammer `Topmenu -> Map -> Map properties...` (entity `world
 
 ### TL;DR
 #### trigger_multiple
-- mod_start_zone - Must have 1, any maps with more than 1 or none will not be accepted
-- mod_end_zone - Must have 1, any maps with more than 1 or none will not be accepted
-- mod_stage_start_X - Optional, if you wish to implement stages refer to [this section](#stages-optional)
-- mod_stage_end_X - Optional, if you wish to implement stages refer to [this section](#stages-optional)
-- mod_checkpoint_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-optional)
+- `mod_zone_start` - Must have 1, any maps with more than 1 or none will not be accepted
+- `mod_zone_end` - Must have 1, any maps with more than 1 or none will not be accepted
+- `mod_zone_stage_start_X` - Optional, if you wish to implement stages refer to [this section](#stages-optional)
+- `mod_zone_stage_end_X` - Optional, if you wish to implement stages refer to [this section](#stages-optional)
+- `mod_zone_checkpoint_X` - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-optional)
 
 If you wish to sanity check your map download ##this## tool then drag & drop the map onto it.
 
 ## Plugin guidelines
 If you wish to make a timer for this gamemode please follow our standards.  
-- Start zone `mod_start_zone`
+- Start zone `mod_zone_start`
   - The tick where `!(EntityFlags & FL_ONGROUND)` is when the timer starts, or if walk out of the zone while touching the ground.
     - A players timer should be stopped if the speed of the player is greater than 290 upon timer start. if this happens you probably did something wrong in the first place!
   - A player should not be able to run faster than 290 on ground inside a start zone.
   - If a player's timer is already started and he jumps back in the start zone **and** lands on the ground inside the start zone, he should be punished with a speed reset to 250.
-- End zone `mod_end_zone`
+- End zone `mod_zone_end`
   - The tick where a SDKHook `OnTouch` happens is the tick we use to measure the tick count from when he left the ground inside the start zone.
-- Stages start `mod_stage_start_X`
+- Stages start `mod_zone_stage_start_X`
   - Use the same logic as you used for start zones, except the speed punishments.
   - It should not be possible to start a new stage without finishing the previous.
   - Please also read the [mapping guidelines on stages](#stages-optional), it will strengthen your knowledge and understanding of stages.
-- Stages end `mod_start_end_X`
+- Stages end `mod_zone_stage_end_X`
   - Use the same logic as you used for end zones.
-- Checkpoint start `mod_checkpoint_X`
-  - A checkpoint time does not reset when entering a new checkpoint, it only marks what your main timer was at when you hit the checkpoint.
+- Checkpoint start `mod_zone_checkpoint_X`
+  - Reaching/initial touch on a checkpoint zone only marks what your main timer was at when reaching this area.
   - Please also read the [mapping guidelines on checkpoints](#checkpoints-optional), it will strengthen your knowledge and understanding of checkpoints.
 - Ticks vs Time
   - How we calculate time used in a run is TBD
