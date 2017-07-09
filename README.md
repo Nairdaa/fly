@@ -17,6 +17,7 @@ sv_staminamax 0
 sv_staminajumpcost 0
 sv_staminalandcost 0
 
+sv_autobunnyhopping 1
 sv_enablebunnyhopping 1
 sv_clamp_unsafe_velocities 0
 
