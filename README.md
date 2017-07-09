@@ -3,6 +3,7 @@
 ## Table of contents
 - [Gamemode settings](#gamemode-settings)
 - [Mapping guidelines](#mapping-guidelines)
+- [Plugin guidelines](#plugin-guidelines)
 
 ## Gamemode settings
 Tickrate: 64  
@@ -44,6 +45,7 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 #### Basics of zoning
 - There can only be unique names in the property field `name`, having more than 1 entity with the same `name` will result in sanity check fail.
 - It is the mappers job to mark/draw zones if they wish to do so!
+- Do not place a booster inside your start zone, they need to be atleast 72 units apart from eachother!
 
 #### Start zone
 The map must have 1 `trigger_multiple` entity with the property `name` set to `mod_start_zone`.  
@@ -142,3 +144,26 @@ You can find this in hammer `Topmenu -> Map -> Map properties...` (entity `world
 - mod_checkpoint_end_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-(optional))
 
 If you wish to sanity check your map download ##this## tool then drag & drop the map onto it.
+
+## Plugin guidelines
+If you wish to make a timer for this game mode please follow our standards.  
+- Start zone `mod_start_zone`
+  - The tick where `!(EntityFlags & FL_ONGROUND)` is when the timer starts.
+    - A players timer should be stopped if the speed of the player is greater than 290 upon timer start. if this happens you probably did something wrong in the first place!
+  - A player should not be able to run faster than 290 on ground inside a start zone.
+  - If a player's timer is already started and he jumps back in the start zone **and** lands on the ground inside the start zone, he should be punished with a speed reset to 250.
+- End zone `mod_end_zone`
+  - The tick where a SDKHook `OnTouch` happens is the tick we use to measure the tick count from when he left the ground inside the start zone.
+- Stages start `mod_stage_start_X`
+  - Use the same logic as you used for start zones, except the speed punishments.
+  - It should not be possible to start a new stage without finishing the previous.
+  - Please also read the [mapping guidelines on stages](#stages-(optional)), it will strengthen your knowledge and understanding of stages.
+- Stages end `mod_start_end_X`
+  - Use the same logic as you used for end zones.
+- Checkpoint start `mod_checkpoint_start_X`
+  - Use the same logic as you used for start zones, except the speed punishments.
+  - Please also read the [mapping guidelines on checkpoints](#checkpoints-(optional)), it will strengthen your knowledge and understanding of checkpoints.
+- Ticks vs Time
+  - Use ticks instead of time e.g. `ticks * tick_interval` to get a precise time.
+  
+Other than that apply common sense to whatever you do :)
