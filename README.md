@@ -123,9 +123,8 @@ mod_end_zone
 ### Map properties
 #### Giving your map a difficulty
 You can find this in hammer `Topmenu -> Map -> Map properties...`  
-  
 ![Step 1  ](http://i.imgur.com/biu9Ipf.png)  
-![Step 2  ](http://i.imgur.com/9DTt3yR.png)
+![Step 2  ](http://i.imgur.com/9DTt3yR.png)  
 
 ### Naming convention
 - Map names should have the prefix `fly_`
@@ -136,9 +135,9 @@ You can find this in hammer `Topmenu -> Map -> Map properties...`
 #### trigger_multiple
 - mod_start_zone - Must have 1, any maps with more than 1 or none will not be accepted
 - mod_end_zone - Must have 1, any maps with more than 1 or none will not be accepted
-- mod_stage_start_X - Optional, if you wish to implement stages refer to [this section](#Stages-(optional))
-- mod_stage_end_X - Optional, if you wish to implement stages refer to [this section](#Stages-(optional))
-- mod_checkpoint_start_X - Optional, if you wish to implement checkpoints refer to [this section](#Checkpoints-(optional))
-- mod_checkpoint_end_X - Optional, if you wish to implement checkpoints refer to [this section](#Checkpoints-(optional))
+- mod_stage_start_X - Optional, if you wish to implement stages refer to [this section](#stages-(optional))
+- mod_stage_end_X - Optional, if you wish to implement stages refer to [this section](#stages-(optional))
+- mod_checkpoint_start_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-(optional))
+- mod_checkpoint_end_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-(optional))
 
 If you wish to sanity check your map download ##this## tool then drag & drop the map onto it.
