@@ -6,7 +6,7 @@
 - [Plugin guidelines](#plugin-guidelines)
 
 ## Gamemode settings
-Tickrate: 64  
+Tickrate: TBC  
 ```CPP
 sv_accelerate 5
 sv_airaccelerate 1000
