@@ -1,8 +1,8 @@
 # Fly
 
 ## Table of contents
-- [Mapping guidelines](#Mapping-guidelines)
-- [Gamemode settings](#Gamemode-settings)
+- [Gamemode settings](#gamemode-settings)
+- [Mapping guidelines](#mapping-guidelines)
 
 ## Gamemode settings
 Tickrate: 64  
@@ -31,12 +31,12 @@ sv_ladder_scale_speed 1
 
 The values on `sv_friction, sv_backspeed & sv_stopspeed` are all taken from the default settings of Counter-Strike: Source.
 ## Mapping guidelines
-- [Zones](#Zones)
-- [Start zone](#Start-zone)
-- [End zone](#End-zone)
-- [Stages (optional)](#Stages-(optional))
-- [Checkpoints (optional)](#Checkpoints-(optional))
-- [TL;DR](#TL;DR)
+- [Zones](#zones)
+- [Start zone](#start-zone)
+- [End zone](#end-zone)
+- [Stages (optional)](#stages-(optional))
+- [Checkpoints (optional)](#checkpoints-(optional))
+- [TL;DR](#tl;dr)
 
 ### Zones
 #### Basics of zoning
