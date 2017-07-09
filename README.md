@@ -29,7 +29,7 @@ sv_stopspeed 75
 sv_ladder_scale_speed 1
 ```
 
-The values on `sv_friction, sv_backspeed & sv_stopspeed` are all taken from the default settings of Counter-Strike: Source.
+The values on `sv_friction, sv_backspeed & sv_stopspeed` are all taken from the default settings in Counter-Strike: Source.
 ## Mapping guidelines
 - [Zones](#zones)
 - [Start zone](#start-zone)
