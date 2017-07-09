@@ -35,8 +35,8 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 - [Zones](#zones)
 - [Start zone](#start-zone)
 - [End zone](#end-zone)
-- [Stages (optional)](#stages-(optional))
-- [Checkpoints (optional)](#checkpoints-(optional))
+- [Stages (optional)](#stages-optional)
+- [Checkpoints (optional)](#checkpoints-optional)
 - [Map properties](#map-properties)
 - [Naming convention](#naming-convention)
 - [Zones TL;DR](#tl;dr)
@@ -138,10 +138,10 @@ You can find this in hammer `Topmenu -> Map -> Map properties...` (entity `world
 #### trigger_multiple
 - mod_start_zone - Must have 1, any maps with more than 1 or none will not be accepted
 - mod_end_zone - Must have 1, any maps with more than 1 or none will not be accepted
-- mod_stage_start_X - Optional, if you wish to implement stages refer to [this section](#stages-(optional))
-- mod_stage_end_X - Optional, if you wish to implement stages refer to [this section](#stages-(optional))
-- mod_checkpoint_start_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-(optional))
-- mod_checkpoint_end_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-(optional))
+- mod_stage_start_X - Optional, if you wish to implement stages refer to [this section](#stages-optional)
+- mod_stage_end_X - Optional, if you wish to implement stages refer to [this section](#stages-optional))
+- mod_checkpoint_start_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-optional)
+- mod_checkpoint_end_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-optional)
 
 If you wish to sanity check your map download ##this## tool then drag & drop the map onto it.
 
@@ -157,12 +157,12 @@ If you wish to make a timer for this game mode please follow our standards.
 - Stages start `mod_stage_start_X`
   - Use the same logic as you used for start zones, except the speed punishments.
   - It should not be possible to start a new stage without finishing the previous.
-  - Please also read the [mapping guidelines on stages](#stages-(optional)), it will strengthen your knowledge and understanding of stages.
+  - Please also read the [mapping guidelines on stages](#stages-optional), it will strengthen your knowledge and understanding of stages.
 - Stages end `mod_start_end_X`
   - Use the same logic as you used for end zones.
 - Checkpoint start `mod_checkpoint_start_X`
   - Use the same logic as you used for start zones, except the speed punishments.
-  - Please also read the [mapping guidelines on checkpoints](#checkpoints-(optional)), it will strengthen your knowledge and understanding of checkpoints.
+  - Please also read the [mapping guidelines on checkpoints](#checkpoints-optional), it will strengthen your knowledge and understanding of checkpoints.
 - Ticks vs Time
   - Use ticks instead of time e.g. `ticks * tick_interval` to get a precise time.
   
