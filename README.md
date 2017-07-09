@@ -66,7 +66,7 @@ The map must have 1 `trigger_multiple` entity with the property `name` set to `m
 Having more than entity with the property `name` set to `mod_zone_end` will result in a failed sanity check.  
 
 #### Stages (optional)
-To start of `mod_zone_start` acts as a `mod_zone_stage_start_1` and `mod_zone_end` acts as a `mod_zone_stage_end_<last_stage>` if ``.  
+To start of `mod_zone_start` acts as a `mod_zone_stage_start_1` and `mod_zone_end` acts as a `mod_zone_stage_end_<last_stage>` if there is stage zones present.  
 
 Examples of entities
 ```CPP
