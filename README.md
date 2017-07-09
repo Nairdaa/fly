@@ -41,6 +41,7 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 - [End zone](#end-zone)
 - [Stages (optional)](#stages-optional)
 - [Checkpoints (optional)](#checkpoints-optional)
+- [Bonus zones](#bonus-zones)
 - [Map properties](#map-properties)
 - [Naming convention](#naming-convention)
 - [Zones TL;DR](#tldr)
@@ -124,6 +125,18 @@ mod_zone_stage_start_2
 mod_zone_checkpoint_3
 mod_zone_checkpoint_4
 mod_zone_end
+```
+
+#### Bonus zones
+Same logic applies to all bonus zones except you add `_bonus_X_` after `_zone_`  
+The `X` defines which bonus the zone belongs to, if there is more than 1 bonus on the same map.  
+```CPP
+// Example of valid names where X represents a number
+mod_zone_bonus_X_start
+mod_zone_bonus_X_end
+mod_zone_bonus_X_stage_start_X
+mod_zone_bonus_X_stage_end_X
+mod_zone_bonus_X_checkpoint_X
 ```
 
 ### Map properties
