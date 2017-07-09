@@ -165,7 +165,7 @@ If you wish to sanity check your map download ##this## tool then drag & drop the
 ## Plugin guidelines
 If you wish to make a timer for this gamemode please follow our standards.  
 - Start zone `mod_start_zone`
-  - The tick where `!(EntityFlags & FL_ONGROUND)` is when the timer starts.
+  - The tick where `!(EntityFlags & FL_ONGROUND)` is when the timer starts, or if walk out of the zone while touching the ground.
     - A players timer should be stopped if the speed of the player is greater than 290 upon timer start. if this happens you probably did something wrong in the first place!
   - A player should not be able to run faster than 290 on ground inside a start zone.
   - If a player's timer is already started and he jumps back in the start zone **and** lands on the ground inside the start zone, he should be punished with a speed reset to 250.
