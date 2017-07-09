@@ -100,36 +100,29 @@ mod_end_zone // Error missing mod_stage_start_2 but previous was mod_stage_end_1
 #### Checkpoints (optional)
 Checkpoints work independently of all other zones which means that skipping checkpoints has no effect on the stages or main run.  
 
-With checkpoints you have to set both start and end zone all the time.
-
 Examples of entities
 ```CPP
 // Example 1 (works!)
 mod_start_zone
-mod_checkpoint_start_1
-mod_checkpoint_end_1
-mod_checkpoint_start_2
-mod_checkpoint_end_2
+mod_checkpoint_1
+mod_checkpoint_2
+mod_checkpoint_3
 mod_end_zone
 
 // Example 2 (does not work!)
 mod_start_zone
-mod_checkpoint_end_1 // Error expected to have mod_checkpoint_start_1
-mod_checkpoint_start_2
-mod_end_zone // Error expected to have mod_checkpoint_end_2
+mod_checkpoint_1
+mod_checkpoint_3 // Error missing checkpoint 2
+mod_end_zone
 
 // Example 3 (works!)
 mod_start_zone
 mod_stage_end_1
-mod_checkpoint_start_1
-mod_checkpoint_end_1
-mod_checkpoint_start_2
-mod_checkpoint_end_2
+mod_checkpoint_1
+mod_checkpoint_2
 mod_stage_start_2
-mod_checkpoint_start_3
-mod_checkpoint_end_3
-mod_checkpoint_start_4
-mod_checkpoint_end_4
+mod_checkpoint_3
+mod_checkpoint_4
 mod_end_zone
 ```
 
@@ -157,8 +150,7 @@ You can find this in hammer `Topmenu -> Map -> Map properties...` (entity `world
 - mod_end_zone - Must have 1, any maps with more than 1 or none will not be accepted
 - mod_stage_start_X - Optional, if you wish to implement stages refer to [this section](#stages-optional)
 - mod_stage_end_X - Optional, if you wish to implement stages refer to [this section](#stages-optional)
-- mod_checkpoint_start_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-optional)
-- mod_checkpoint_end_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-optional)
+- mod_checkpoint_X - Optional, if you wish to implement checkpoints refer to [this section](#checkpoints-optional)
 
 If you wish to sanity check your map download ##this## tool then drag & drop the map onto it.
 
@@ -177,8 +169,8 @@ If you wish to make a timer for this gamemode please follow our standards.
   - Please also read the [mapping guidelines on stages](#stages-optional), it will strengthen your knowledge and understanding of stages.
 - Stages end `mod_start_end_X`
   - Use the same logic as you used for end zones.
-- Checkpoint start `mod_checkpoint_start_X`
-  - Use the same logic as you used for start zones, except the speed punishments.
+- Checkpoint start `mod_checkpoint_X`
+  - A checkpoint time does not reset when entering a new checkpoint, it only marks what your main timer was at when you hit the checkpoint.
   - Please also read the [mapping guidelines on checkpoints](#checkpoints-optional), it will strengthen your knowledge and understanding of checkpoints.
 - Ticks vs Time
   - How we calculate time used in a run is TBD
