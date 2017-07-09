@@ -32,7 +32,8 @@ sv_ladder_scale_speed 1
 
 The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all taken from the default settings in Counter-Strike: Source.
 ## Mapping guidelines
-- [The map itself](#the-map-itself)
+- [Map props](#map-props)
+- [Basics of zoning](#basics-of-zoning)
 - [Start zone](#start-zone)
 - [End zone](#end-zone)
 - [Stages (optional)](#stages-optional)
@@ -41,7 +42,6 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 - [Naming convention](#naming-convention)
 - [Zones TL;DR](#tldr)
 
-### The map itself
 #### Map props
 - Refrain from using props that can be used to RNG player runs e.g. moving props (barrels, rotating things etc.) and opening doors.
 
