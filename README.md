@@ -134,10 +134,12 @@ You can find this in hammer `Topmenu -> Map -> Map properties...` (entity `world
 - Map difficulty `mod_tier` -> `3` range from 1 to 6, where 1 is easy and 6 is hard.
 - Map creator `mod_creator` -> `my name`
 - Map creator's steamid64 `mod_creator_steamid64` -> `76561198244883534`
+
 ### Naming convention
 - Map names should have the prefix `fly_`
 - Refrain from adding suffix'es to map names e.g. `fly_mymap_v1, fly_mymap_v2, fly_mymap_fix, fly_mymap_<insert_name_of_commnuity_here>`
-- Do **not** use uppercase letters, numbers, spaces and special characters in map names e.g. `fly_mym4p, fly_mym$p, fly_MyMAp, fly_my map`
+- Refrain from having numbers in map names e.g. `fly_mym4p`
+- Do **not** use uppercase letters, spaces and special characters in map names e.g. `fly_mym$p, fly_MyMAp, fly_my map`
 
 ### TL;DR
 #### trigger_multiple
