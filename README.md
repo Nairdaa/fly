@@ -47,26 +47,26 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 
 #### General rules
 - It is the mappers duty to reset any changed movement values on clients when they enter the start zone such as gravity or other speed modifiers.
-- Atleast 1 CT & 1 T spawn placed inside the start zone preferably.
+- At least 1 CT & 1 T spawn placed inside the start zone preferably.
 
 #### Map props
 - Refrain from using props that can be used to RNG player runs e.g. moving props (barrels, rotating things etc.) and opening doors.
 
 #### Basics of zoning
-- There can only be unique names in the property field `name`, having more than 1 entity with the same `name` will result in sanity check fail.
+- There can only be unique names in the property field `name`, having more than 1 entity with the same `name` will result in a  sanity check fail.
 - It is the mappers job to mark/draw zones if they wish to do so!
-- Do not place a booster inside your start zone, they need to be atleast 72 units apart from eachother!
+- Do not place a booster inside your start zone, they need to be at least 72 units apart from each other!
 
 #### Start zone
 The map must have 1 `trigger_multiple` entity with the property `name` set to `mod_zone_start`.  
-Having more than entity with the property `name` set to `mod_zone_start` will result in a failed sanity check.  
+Having more than one entity with the property `name` set to `mod_zone_start` will result in a failed sanity check.  
 
 #### End zone
 The map must have 1 `trigger_multiple` entity with the property `name` set to `mod_zone_end`.  
-Having more than entity with the property `name` set to `mod_zone_end` will result in a failed sanity check.  
+Having more than one entity with the property `name` set to `mod_zone_end` will result in a failed sanity check.  
 
 #### Stages (optional)
-To start of `mod_zone_start` acts as a `mod_zone_stage_start_1` and `mod_zone_end` acts as a `mod_zone_stage_end_<last_stage>` if there is stage zones present.  
+The `mod_zone_start` zone acts as a `mod_zone_stage_start_1` and `mod_zone_end` acts as a `mod_zone_stage_end_<last_stage>` if there are stage zones present.
 
 Examples of entities
 ```CPP
