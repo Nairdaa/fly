@@ -123,8 +123,9 @@ mod_end_zone
 ### Map properties
 #### Giving your map a difficulty
 You can find this in hammer `Topmenu -> Map -> Map properties...`  
-![alt text](http://i.imgur.com/biu9Ipf)  
-![alt text](http://i.imgur.com/9DTt3yR)
+  
+![Step 1  ](http://i.imgur.com/biu9Ipf.png)  
+![Step 2  ](http://i.imgur.com/9DTt3yR.png)
 
 ### Naming convention
 - Map names should have the prefix `fly_`
