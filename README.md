@@ -48,6 +48,7 @@ The values on `sv_friction, sv_backspeed, sv_accelerate & sv_stopspeed` are all 
 #### General rules
 - It is the mappers duty to reset any changed movement values on clients when they enter the start zone such as gravity or other speed modifiers.
 - At least 1 CT & 1 T spawn placed inside the start zone preferably.
+- Do not use func_door's to make blocks that teleport you back, this is an outdated technique.
 
 #### Map props
 - Refrain from using props that can be used to RNG player runs e.g. moving props (barrels, rotating things etc.) and opening doors.
