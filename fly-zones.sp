@@ -9,7 +9,7 @@ public void zones_OnPluginStart()
 
 public void zones_OnMapStart()
 {
-	zones_HookZones(); // Re-hook the zones for the new map
+	zones_HookZones(); /* Re-hook the zones for the new map */
 }
 
 void zones_HookZones()
@@ -21,9 +21,8 @@ void zones_HookZones()
 		if ( !IsValidEntity( entity ) )
 			continue;
 		
-		GetEntPropString( entity, Prop_Data, "m_iName", sName, sizeof( sName ) );
-		
-		if( StrContains( sName, "mod_zone" ) == 0 )
+		zone_GetZoneName( entity, sName, sizeof( sName ) );
+		if( IsValidZone( entity ) )
 		{	
 			// It's a zone!
 			SDKHook( entity, SDKHook_StartTouch, Entity_StartTouch );
@@ -32,6 +31,11 @@ void zones_HookZones()
 	}
 }
 
+/*
+ * Gives info of zone based on name
+ * Gives zone type (start, end, checkpoint), checkpoint index (-1 if not applicable) and track number (0 for main)
+ * Takes entity index and reference to variables for storing the details
+ */
 void zone_GetZoneDetails( int entity, Zone& zoneType, int& index, int& track )
 {
 	char sName[128];
@@ -71,7 +75,7 @@ void zone_GetZoneDetails( int entity, Zone& zoneType, int& index, int& track )
 
 public Action Entity_StartTouch( int entity, int client )
 {
-	if ( !IsValidClient( client ) )
+	if( !IsValidClient( client ) )
 		return;
 		
 	if( IsValidZone( entity ) )
@@ -85,13 +89,13 @@ public Action Entity_StartTouch( int entity, int client )
 	{
 		case Zone_Start:
 		{
-			// PLAYER ENTERED START
+			/* PLAYER ENTERED START */
 			timer_StopTimer( client );
 			g_PlayerCurrentTrack[client] = zoneTrack;
 		}
 		case Zone_End:
 		{
-			// PLAYER ENTERED END
+			/* PLAYER ENTERED END */
 			if( g_bTimerStarted[client] && g_PlayerCurrentTrack[client] == zoneTrack )
 			{
 				timer_PlayerFinish( client, zoneTrack, g_PlayerCurrentStyle[client] );
@@ -99,6 +103,7 @@ public Action Entity_StartTouch( int entity, int client )
 		}
 		case Zone_Checkpoint:
 		{
+			/* PLAYER ENTERED CHECKPOINT */
 			if( g_bTimerStarted[client] && g_PlayerCurrentTrack[client] == zoneTrack )
 			{
 				timer_Checkpoint( client, zoneTrack, zoneIndex );
@@ -123,7 +128,7 @@ public Action Entity_EndTouch( int entity, int client )
 	{
 		case Zone_Start:
 		{
-			// PLAYER LEFT START ZONE
+			/* PLAYER LEFT START ZONE */
 			if( GetClientSpeedSqr( client ) > MAX_START_SPEED_SQR )
 			{
 				PrintToChat( client, "Your start speed was too high, your timer has not been started" );
@@ -135,11 +140,11 @@ public Action Entity_EndTouch( int entity, int client )
 		}
 		case Zone_End:
 		{
-			// PLAYER LEFT END ZONE
+			/* PLAYER LEFT END ZONE */
 		}
 		case Zone_Checkpoint:
 		{
-			// PLAYER LEFT CHECKPOINT
+			/* PLAYER LEFT CHECKPOINT */
 		}
 	}
 	
@@ -151,6 +156,7 @@ stock void zone_GetZoneName( int entity, char[] buffer, int maxlen )
 	GetEntPropString( entity, Prop_Data, "m_iName", buffer, maxlen );
 }
 
+/* Simply checks whether the name of the entity starts with "mod_zone_" */
 stock bool IsValidZone( int entity )
 {
 	char name[64];
