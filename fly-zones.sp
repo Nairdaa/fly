@@ -150,3 +150,42 @@ stock void zone_GetZoneName( int entity, char[] buffer, int maxlen )
 {
 	GetEntPropString( entity, Prop_Data, "m_iName", buffer, maxlen );
 }
+
+stock bool IsValidZone( int entity )
+{
+	char name[64];
+	zone_GetZoneName( entity, name, sizeof( name ) );
+	
+	return ( StrContains( name, "mod_zone_" ) == 0 );
+}
+
+stock float GetClientSpeedSqr( int client )
+{
+	float vel[2];
+	vel[0] = GetEntPropFloat( client, Prop_Data, "m_vecVelocity[0]" );
+	vel[1] = GetEntPropFloat( client, Prop_Data, "m_vecVelocity[1]" );
+	
+	return ( ( vel[0]*vel[0] ) + ( vel[1]*vel[1] ) );
+}
+
+stock float GetClientSpeed( int client )
+{
+	return SquareRoot( GetClientSpeedSqr( client ) );
+}
+
+stock void SetClientSpeed( int client, float speed )
+{
+	if( IsValidClient( client ) && IsPlayerAlive( client ) )
+	{
+		float player_vel[3];
+		GetEntPropVector( client, Prop_Data, "m_vecVelocity", player_vel );
+
+		float scale = speed / GetClientSpeed( client );
+
+		if( scale < 1.0 )
+		{
+			ScaleVector( player_vel, scale );
+			TeleportEntity( client, NULL_VECTOR, NULL_VECTOR, player_vel );
+		}
+	}
+}
