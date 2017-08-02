@@ -1,6 +1,14 @@
 #define MAX_START_SPEED 		290.0
 #define MAX_START_SPEED_SQR 	MAX_START_SPEED * MAX_START_SPEED
 
+enum Zone
+{
+	Zone_None = -1,
+	Zone_Start,
+	Zone_End,
+	Zone_Checkpoint
+}
+
 public void zones_OnPluginStart()
 {
 	/* Start off by looking for (and hooking) the zones! */
