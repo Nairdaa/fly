@@ -83,10 +83,7 @@ void zone_GetZoneDetails( int entity, Zone& zoneType, int& index, int& track )
 
 public Action Entity_StartTouch( int entity, int client )
 {
-	if( !IsValidClient( client ) )
-		return;
-		
-	if( IsValidZone( entity ) )
+	if( !IsValidClient( client ) || !IsValidZone( entity ) )
 		return;
 		
 	Zone zoneType;
@@ -124,7 +121,7 @@ public Action Entity_StartTouch( int entity, int client )
 
 public Action Entity_EndTouch( int entity, int client )
 {
-	if( !IsValidZone( entity ) )
+	if( !IsValidClient( client ) || !IsValidZone( entity ) )
 		return;
 		
 	Zone zoneType;
