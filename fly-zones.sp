@@ -13,18 +13,19 @@ public void zones_OnPluginStart()
 {
 	/* Start off by looking for (and hooking) the zones! */
 	zones_HookZones();
+	HookEvent( "round_start", Event_RoundStartPost, EventHookMode_Post );
 }
 
-public void zones_OnMapStart()
+public Action Event_RoundStartPost( Event event, char[] name, bool dontBroadcast )
 {
-	zones_HookZones(); /* Re-hook the zones for the new map */
+	zones_HookZones(); /* Re-hook the zones at round start */
 }
 
 void zones_HookZones()
 {
 	int entity = -1;
 	char sName[128];
-	while( ( entity = FindEntityByClassname( entity, "trigger_multiple" ) != -1 ) )
+	while( ( entity = FindEntityByClassname( entity, "trigger_multiple" ) ) != -1 )
 	{
 		if ( !IsValidEntity( entity ) )
 			continue;
@@ -44,7 +45,7 @@ void zones_HookZones()
  * Gives zone type (start, end, checkpoint), checkpoint index (-1 if not applicable) and track number (0 for main)
  * Takes entity index and reference to variables for storing the details
  */
-void zone_GetZoneDetails( int entity, Zone& zoneType, int& index, int& track )
+void zone_GetZoneDetails( int entity, Zone& zoneType, int& track, int& index )
 {
 	char sName[128];
 	char sDetails[6][64];
@@ -172,9 +173,8 @@ stock bool IsValidZone( int entity )
 
 stock float GetClientSpeedSqr( int client )
 {
-	float vel[2];
-	vel[0] = GetEntPropFloat( client, Prop_Data, "m_vecVelocity[0]" );
-	vel[1] = GetEntPropFloat( client, Prop_Data, "m_vecVelocity[1]" );
+	float vel[3];
+	GetEntPropVector( client, Prop_Data, "m_vecVelocity", vel );
 	
 	return ( ( vel[0]*vel[0] ) + ( vel[1]*vel[1] ) );
 }
@@ -193,10 +193,7 @@ stock void SetClientSpeed( int client, float speed )
 
 		float scale = speed / GetClientSpeed( client );
 
-		if( scale < 1.0 )
-		{
-			ScaleVector( player_vel, scale );
-			TeleportEntity( client, NULL_VECTOR, NULL_VECTOR, player_vel );
-		}
+		ScaleVector( player_vel, scale );
+		TeleportEntity( client, NULL_VECTOR, NULL_VECTOR, player_vel );
 	}
 }
