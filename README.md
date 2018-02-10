@@ -13,6 +13,7 @@ sv_airaccelerate 1000
 sv_wateraccelerate 1000
 sv_maxvelocity 3500
 sv_jump_impulse 301.993377
+sv_timebetweenducks 0
 
 sv_staminamax 0
 sv_staminajumpcost 0
